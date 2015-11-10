@@ -1,3 +1,5 @@
+package persistance;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,11 +9,11 @@ import java.util.List;
 /**
  * Created by usuario on 10/11/2015.
  */
-public class DomainReader {
+public class FileDomainReader implements  DomainReader {
 
     private String path;
 
-    public DomainReader(String path) {
+    public FileDomainReader(String path) {
         this.path = path;
     }
 

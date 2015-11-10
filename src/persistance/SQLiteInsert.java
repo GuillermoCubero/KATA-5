@@ -1,3 +1,5 @@
+package persistance;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,14 +9,15 @@ import java.util.List;
 /**
  * Created by usuario on 10/11/2015.
  */
-public class SQLInsert {
+public class SQLiteInsert implements SQLInsert {
 
     private List<String> domains;
 
-    public SQLInsert(List<String> domains) {
+    public SQLiteInsert(List<String> domains) {
         this.domains = domains;
     }
 
+    @Override
     public void execute() {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:People");

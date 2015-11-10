@@ -1,4 +1,8 @@
-import java.sql.*;
+import persistance.DomainReader;
+import persistance.FileDomainReader;
+import persistance.SQLInsert;
+import persistance.SQLiteInsert;
+
 import java.util.List;
 
 /**
@@ -6,12 +10,13 @@ import java.util.List;
  */
 public class Main {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
-        DomainReader domainReader = new DomainReader("domains.txt");
+
+        DomainReader domainReader = new FileDomainReader("domains.txt");
         List<String> domains = domainReader.getDomains();
 
-        SQLInsert sqlInsert = new SQLInsert(domains);
+        SQLInsert sqlInsert = new SQLiteInsert(domains);
         sqlInsert.execute();
     }
 }
